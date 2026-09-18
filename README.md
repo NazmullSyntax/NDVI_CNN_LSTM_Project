@@ -29,3 +29,40 @@ The model combines:
 ---
 
 ## 3. System Architecture
+
+---
+
+## 4. Dataset Requirements
+
+- One NDVI GeoTIFF per year: `ndvi_2000.tif` through `ndvi_2025.tif`
+- All rasters must share the same CRS, extent, resolution, and grid.
+- A Dhaka boundary shapefile or GeoJSON, such as `data/boundary/dhaka_boundary.shp`.
+
+Supported raw sensors are Landsat 5/7/8/9 and Sentinel-2.
+
+| Sensor | RED | NIR | QA |
+| --- | --- | --- | --- |
+| Landsat 5/7 | B3 | B4 | BQA |
+| Landsat 8/9 | B4 | B5 | BQA |
+| Sentinel-2 | B4 | B8 | SCL |
+
+Convert sensor imagery to aligned annual NDVI GeoTIFFs before running the
+preprocessing pipeline.
+
+---
+
+## 5. Installation
+
+Create and activate a virtual environment, then install the pinned project
+dependencies:
+
+```bash
+# Windows
+python -m venv venv
+venv\\Scripts\\activate
+
+# macOS/Linux
+# source venv/bin/activate
+
+pip install -r requirements.txt
+```
