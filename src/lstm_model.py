@@ -1,12 +1,36 @@
-"""Temporal LSTM model components."""
+"""
+lstm_model.py
+=============
+Standalone LSTM for temporal modeling of pre-extracted CNN feature
+vectors. Kept separate from the combined model for clarity and
+ablation experiments.
+"""
+
+import tensorflow as tf
+from tensorflow.keras import layers, Model
 
 
-def build_lstm(sequence_shape: tuple[int, int], units: int = 64, horizon: int = 1):
-    """Build an LSTM regressor for feature sequences."""
-    from tensorflow.keras import Input, Model
-    from tensorflow.keras.layers import LSTM, Dense
+def build_lstm_model(
+    sequence_length=5,
+    feature_dim=128,
+    lstm_units=128,
+    output_dim=64 * 64,  # flattened NDVI image
+    name="lstm_model",
+) -> Model:
+    """
+    LSTM that reads a sequence of spatial feature vectors and predicts
+    a flattened NDVI image.
+    """
+    inputs = layers.Input(shape=(sequence_length, feature_dim), name="feature_seq")
 
-    inputs = Input(shape=sequence_shape, name="feature_sequence")
-    hidden = LSTM(units, dropout=0.1, name="temporal_encoder")(inputs)
-    outputs = Dense(horizon, name="ndvi_forecast")(hidden)
-    return Model(inputs, outputs, name="ndvi_lstm")
+    x = layers.LSTM(lstm_units, return_sequences=False)(inputs)
+    x = layers.Dense(256, activation="relu")(x)
+    x = layers.Dropout(0.2)(x)
+    outputs = layers.Dense(output_dim, activation="sigmoid", name="ndvi_flat")(x)
+
+    return Model(inputs, outputs, name=name)
+
+
+if __name__ == "__main__":
+    m = build_lstm_model()
+    m.summary()
