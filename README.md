@@ -66,3 +66,53 @@ venv\\Scripts\\activate
 
 pip install -r requirements.txt
 ```
+
+## 6. Run the Project
+
+1. Install [Python 3.10](https://python.org/) and select **Add Python to PATH** during installation.
+2. Install [VS Code](https://code.visualstudio.com/) and the Microsoft Python extension.
+3. Open this project folder in VS Code with **File > Open Folder**.
+4. Open a terminal with **Ctrl+`** and create the virtual environment:
+
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+5. Generate demo data:
+
+```powershell
+python src/data_preprocessing.py --demo
+```
+
+6. Train the model:
+
+```powershell
+python src/train.py
+```
+
+7. Evaluate the model:
+
+```powershell
+python src/evaluate.py
+```
+
+8. Generate a five-year forecast:
+
+```powershell
+python src/predict_future.py --years 5
+```
+
+9. Run spatial analysis and generate figures:
+
+```powershell
+python src/spatial_analysis.py
+python src/visualization.py
+```
+
+10. Launch the Streamlit application:
+
+```powershell
+streamlit run app.py
+```
