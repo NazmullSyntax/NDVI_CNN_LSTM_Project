@@ -1,27 +1,31 @@
-# NDVI CNN-LSTM Project
+# 🌿 CNN-LSTM Based Spatio-Temporal Prediction of Urban Green Space Dynamics Using NDVI
 
-A starter research workflow for calculating Normalized Difference Vegetation Index (NDVI), extracting spatial features with a CNN, and forecasting temporal patterns with an LSTM.
+**Study Area:** Dhaka City, Bangladesh  
+**Historical Period:** 2000 – 2025  
+**Future Prediction:** Configurable (default 2026 – 2030)
 
-## Project structure
+---
 
-- `data/`: raw, processed, boundary, and demo inputs
-- `models/`: trained model artifacts
-- `notebooks/`: ordered exploration and modeling workflow
-- `outputs/`: figures, maps, CSV exports, and reports
-- `src/`: reusable preprocessing, modeling, evaluation, prediction, and visualization code
+## 1. Introduction
 
-## Setup
+This project predicts future urban green-space dynamics in Dhaka City using
+satellite-derived NDVI (Normalized Difference Vegetation Index) time series.
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
+The model combines:
+- **CNN (Convolutional Neural Network)** → extracts spatial patterns from each NDVI image
+- **LSTM (Long Short-Term Memory)** → learns temporal dynamics across years
+- **CNN-LSTM (TimeDistributed)** → end-to-end spatio-temporal forecasting
 
-Run the dashboard with:
+---
 
-```powershell
-streamlit run app.py
-```
+## 2. Research Objectives
 
-Start with the notebooks in numerical order. The scaffold uses `.npy` and `.npz` arrays for a simple demo path; raster and vector workflows can be added through `rasterio` and `geopandas`.
+1. Analyze vegetation change in Dhaka from 2000 to 2025.
+2. Build a CNN-LSTM model that learns spatio-temporal NDVI patterns.
+3. Predict future NDVI (2026 onward).
+4. Quantify green-space area and percentage change.
+5. Validate the model with **chronological back-testing** (not random splits).
+
+---
+
+## 3. System Architecture
