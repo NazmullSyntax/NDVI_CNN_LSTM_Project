@@ -1,3 +1,3 @@
-"""NDVI CNN-LSTM project package."""
+"""CNN-LSTM NDVI Prediction Package for Dhaka City."""
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
