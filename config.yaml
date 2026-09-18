@@ -1,0 +1,56 @@
+# ============================================================
+# Configuration for CNN-LSTM NDVI Prediction Project
+# ============================================================
+
+study_area: Dhaka
+
+# Historical data range
+start_year: 2000
+end_year: 2025
+
+# Future prediction
+future_years: 5
+
+# Model parameters
+sequence_length: 5
+image_size: 64
+
+# Chronological train/val/test split
+train_end_year: 2019
+validation_end_year: 2022
+
+# Training hyperparameters
+epochs: 100
+batch_size: 4
+learning_rate: 0.001
+early_stopping_patience: 15
+
+# NDVI value range
+ndvi_min: -1.0
+ndvi_max: 1.0
+
+# Green-space classification thresholds (project parameters, not scientific truth)
+green_thresholds:
+  water_max: 0.0
+  bare_max: 0.2
+  low_veg_max: 0.4
+  moderate_veg_max: 0.6
+  # above 0.6 = high vegetation
+
+# Change detection thresholds
+change_threshold: 0.05
+
+# Paths (relative to project root)
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  boundary: data/boundary
+  demo_data: data/demo
+  models: models
+  figures: outputs/figures
+  maps: outputs/maps
+  csv: outputs/csv
+  reports: outputs/reports
+
+# Random seed for reproducibility
+random_seed: 42
